@@ -1,0 +1,14 @@
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css);
+
+body {
+    font-family: Nunito, sans-serif;
+}
+
+.navbar-brand img {
+    height: 20px; 
+    border-right: 1px solid #333;
+}
+
+.profile-img {
+    max-width: 40px;
+}

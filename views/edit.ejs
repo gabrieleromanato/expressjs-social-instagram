@@ -1,0 +1,52 @@
+<%- include('header') -%>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Edit Profile</div>
+
+                <div class="card-body">
+                    <form method="post" action="/profile/<%= currentUser.username %>/edit" id="edit-profile-form" enctype="multipart/form-data">
+
+                        <div class="form-group row">
+                            <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
+
+                            <div class="col-md-6">
+                                <textarea name="description" id="description" class="form-control"><%= currentUser.description %></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="url" class="col-md-4 col-form-label text-md-right">URL</label>
+
+                            <div class="col-md-6">
+                                <input type="text" id="url" name="url" class="form-control" value="<%= currentUser.url %>">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="image" class="col-md-4 col-form-label text-md-right">Image</label>
+
+                            <div class="col-md-6">
+                                <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <input type="hidden" name="id" value="<%= currentUser._id %>">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include('footer') -%>

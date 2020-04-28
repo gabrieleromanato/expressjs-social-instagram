@@ -1,0 +1,29 @@
+<%- include('header') -%>
+
+<div class="container">
+    <% posts.forEach(post => { %>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <a href="/profile/<%= post.user.username %>">
+                    <img src="/public/images/posts/<%= post.image %>" class="w-100 img-fluid">
+                </a>
+            </div>
+        </div>
+        <div class="row pt-2 pb-4">
+            <div class="col-6 offset-3">
+                <div>
+                    <p>
+                    <span class="font-weight-bold">
+                        <a href="/profile/<%= post.user.username %>">
+                            <span class="text-dark"><%= post.user.username %></span>
+                        </a>
+                    </span> <%= post.description %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</div>
+
+
+<%- include('footer') -%>

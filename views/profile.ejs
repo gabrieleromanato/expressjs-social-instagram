@@ -1,0 +1,62 @@
+<%- include('header') -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3 p-5">
+            <img src="/public/images/profiles/<%= currentUser.image %>" class="rounded-circle w-100">
+        </div>
+        <div class="col-9 pt-5">
+            <div class="d-flex justify-content-between align-items-baseline">
+                <div class="d-flex align-items-center pb-3">
+                    <div class="h4"><%= currentUser.username %></div>
+                    <% if(isLoggedIn) { %>
+                       <% if(user && user._id != currentUser._id) { %>
+                       <% const following = user.following;
+                          const action = following.includes(currentUser._id) ? 'unfollow' : 'follow';
+                       %>
+                        <button class="btn btn-primary ml-4" data-action="<%= action %>" data-follower="<%= user._id %>" data-following="<%= currentUser._id %>" id="follow-btn">Follow</button>
+                       <% } %>  
+                    <% } %> 
+
+                    
+                </div>
+
+                    <% if(user && user._id == currentUser._id) { %>
+                        <a href="/posts/create">Add New Post</a>
+                    <% } %>
+                
+
+            </div>
+
+                <% if(user && user._id == currentUser._id) { %>
+                    <a href="/profile/<%= currentUser.username %>/edit">Edit Profile</a>
+                <% } %>
+            
+
+            <div class="d-flex">
+                <div class="pr-5"><strong id="posts"><%= currentUser.posts.length %></strong> posts</div>
+                <div class="pr-5"><strong id="followers"><%= currentUser.followers.length %></strong> followers</div>
+                <div class="pr-5"><strong id="following"><%= currentUser.following.length %></strong> following</div>
+            </div>
+            <div class="pt-4 font-weight-bold"><%= currentUser.name %></div>
+            <div><%= currentUser.description %></div>
+            <div><a href="<%= currentUser.url %>"><%= currentUser.url %></a></div>
+        </div>
+    </div>
+
+    <div class="row pt-5">
+        <% if(posts.length > 0) {
+            posts.forEach(post => {
+        %>        
+            <div class="col-4 pb-4">
+                <a href="/posts/<%= post._id %>">
+                    <img src="/public/images/posts/<%= post.image %>" class="w-100">
+                </a>
+            </div>
+        <% });
+
+        } %>
+    </div>
+</div>
+
+<%- include('footer') -%>
